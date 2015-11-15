@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Title of the document</title>
+</head>
+
+<body>
+    <div>
+        Steps:
+        {% include 'CraueFormFlowBundle:FormFlow:stepList.html.twig' %}
+    </div>
+
+    {{ form_start(form) }}
+        {% if 1 == flow.getCurrentStepNumber() %}
+            {{ form_row(form.description) }}
+            {{ form_row(form.level) }}
+        {% elseif 2 == flow.getCurrentStepNumber() %}
+
+            <h3>Tags</h3>
+            {{ form_row(form.tags) }}
+        {% endif %}
+
+        {{ form_rest(form) }}
+
+        {% include 'CraueFormFlowBundle:FormFlow:buttons.html.twig' %}
+
+    {{ form_end(form) }}
+</body>
+
+</html>

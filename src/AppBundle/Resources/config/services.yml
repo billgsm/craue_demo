@@ -1,0 +1,12 @@
+services:
+    task.form.create_task:
+        class: AppBundle\Form\TaskType
+        tags:
+            - { name: form.type, alias: createTask }
+
+    task.form.flow.create_task:
+        class: AppBundle\Form\CreateTaskFlow
+        parent: craue.form.flow
+        scope: request
+        calls:
+            - [ setFormType, [ "@task.form.create_task" ] ]
